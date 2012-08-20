@@ -30,6 +30,8 @@ def main():
               'TrajFilePath': 'Trajectories',
               'TrajFileType': '.lh5',
               'TrajLengths': [args.traj_length]*args.n_trajs})
+              
+              
     if os.path.exists('ProjectInfo.h5'):
         print >> sys.stderr, "The file ./ProjectInfo.h5 already exists. I don't want to overwrite anything, so i'm backing off"
         sys.exit(1)
@@ -46,6 +48,9 @@ def main():
         
         # select initial configs randomly from a 2D box
         initial_x = [random.uniform(-1.5, 1.2), random.uniform(-0.2, 2)]
+        print 'starting conformation from randomly sampled points (%s, %s)' % (initial_x[0], initial_x[1])
+        print 'propagating for %s steps on the Muller potential with a Langevin integrator...' % args.traj_length
+        
         positions = muller.propagate(args.traj_length, initial_x, kT, dt, mGamma, forcecalculator)
 
         # positions is N x 2, but we want to make it N x 1 x 3 where the additional
@@ -56,10 +61,10 @@ def main():
         t['XYZList'] = positions3
         
         t.SaveToLHDF(project.GetTrajFilename(i))
-        project.LoadTraj(i)
+        print 'saving trajectory to %s' % project.GetTrajFilename(i)
         
     project.SaveToHDF('ProjectInfo.h5')
-    print 'saved ProjectInfo.h5'
+    print 'saved ProjectInfo.h5 file'
     
     
 if __name__ == '__main__':
