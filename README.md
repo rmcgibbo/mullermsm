@@ -1,12 +1,13 @@
 MullerMSM : An MSMBuilder addon for dynamics on the 2D Muller Potential
 =========
 
+<img width="400" height="400" src=https://raw.github.com/rmcgibbo/mullermsm/master/potential.png></src>
+
+
 Overview
 --------
 This package allows you to sample trajectories on the Muller potential
 and then use MSMBuilder to build MSMs for the dynamics.
-
-<img width="200" height="200" src=https://raw.github.com/rmcgibbo/mullermsm/master/potential.png></src>
 
 
 Using MullerMSM
