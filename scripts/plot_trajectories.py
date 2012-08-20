@@ -16,7 +16,7 @@ def main():
         help='''Supply either the path to a trajectory file (i.e. Data/Gens.lh5),
          or an integer, which will be interepreted as a trajectory index
          into the trajectories that accompany the project. default: plot all
-         of the trajectories''', default=[-1])
+         of the trajectories''', default=['-1'])
     args = parser.parse_args()
     
     p = Project.LoadFromHDF(args.project)
