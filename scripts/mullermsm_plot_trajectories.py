@@ -9,7 +9,7 @@ import matplotlib.pyplot as pp
 from msmbuilder import Project, Trajectory
 from mullermsm.muller import plot_v
 
-pp.ion()
+#pp.ion()
 
 def main():
     parser = argparse.ArgumentParser()
