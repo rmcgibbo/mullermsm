@@ -60,9 +60,8 @@ def main():
         minx, miny = min(np.min(x), minx), min(np.min(y), miny)
         pp.plot(x, y, '.', markersize=markersize, alpha=0.5)
     
-    print maxx, minx, maxy, miny
     plot_v(minx=minx, maxx=maxx, miny=miny, maxy=maxy)
-    ip.embed()
+    pp.show()
     
 if __name__ == '__main__':
     main()
