@@ -6,8 +6,8 @@ from mullermsm.metric import EuclideanMetric
 
 def test_0():
     m = EuclideanMetric()
-    x = {'XYZList': np.random.randn(100,2)}
-    y = {'XYZList': np.random.randn(100,2)}
+    x = {'XYZList': np.random.randn(100,1, 2)}
+    y = {'XYZList': np.random.randn(100,1, 2)}
     
     px, py = m.prepare_trajectory(x), m.prepare_trajectory(y)
 
