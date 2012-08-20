@@ -32,6 +32,9 @@ use the command
 
     Cluster.py custom -i metric.pickl kcenters -k 100
 
+From here on, it's basically a standard msmbuilder project.
+
+Have fun!
 
 Installation
 ------------
