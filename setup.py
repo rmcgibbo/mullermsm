@@ -1,3 +1,4 @@
+from glob import glob
 from distutils.core import setup
 
 setup(name='mullermsm',
@@ -6,4 +7,5 @@ setup(name='mullermsm',
       include_package_data=True,
       package_data = {'': ['conf.pdb']},
       packages=['mullermsm'],
-      package_dir={'mullermsm':'lib'})
+      package_dir={'mullermsm':'lib'},
+      scripts=glob('scripts/*.py'))

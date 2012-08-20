@@ -1,0 +1,4 @@
+theano
+numpy
+matplotlib
+ipython
