@@ -11,8 +11,8 @@ import random
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-n', '--n_trajs', type=int, default=10)
-    parser.add_argument('-t', '--traj_length', type=int, default=10000)
+    parser.add_argument('-n', '--n_trajs', help='number of trajectories. Default=10', type=int, default=10)
+    parser.add_argument('-t', '--traj_length', help='trajectories length. Default=10000', type=int, default=10000)
     args = parser.parse_args()
     
     # these could be configured
