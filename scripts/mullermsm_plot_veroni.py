@@ -15,7 +15,8 @@ from mullermsm.muller import plot_v
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-g', '--generators', default='Data/Gens.lh5', help='Path to Gens.lh5')
-    #parser.add_argument('-a', '--assignments', default='Data/Assignments.h5', help='Path to Assignments.h5')
+    parser.add_argument('-p', '--project', default='ProjectInfo.h5', help='Path to ProjectInfo.h5')
+    parser.add_argument('-s', '--stride', default=1, type=int, help='Stride to plot the data at')
     args = parser.parse_args()
     
     
@@ -47,6 +48,16 @@ def main():
     plot_v(minx=minx, maxx=maxx, miny=miny, maxy=maxy)
     pp.xlim(minx, maxx)
     pp.ylim(miny, maxy)
+
+    # plot a single trajectory
+    p = Project.LoadFromHDF(args.project)
+    t = p.LoadTraj(0)
+    x = t['XYZList'][:,0,0][::args.stride]
+    y = t['XYZList'][:,0,1][::args.stride]
+    pp.plot(x, y, 'k')
+    
+
+
     pp.show()
     
 if __name__ == '__main__':
