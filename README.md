@@ -1,7 +1,7 @@
 # MullerMSM : An MSMBuilder addon for dynamics on the 2D Muller Potential
 
 
-<img width="400" height="400" src=https://raw.github.com/rmcgibbo/mullermsm/master/potential.png></src>
+<img width="400" height="400" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/potential.png></src>
 
 
 ## Overview
@@ -50,7 +50,7 @@ The third script, `mullermsm_voronoi.py`, helps to visualize the microstates
 and macrostates of your MSMs.
 
 
-### Simulating Trajectories on the Muller Potential Energy Surface
+### (1) Simulating Trajectories on the Muller Potential Energy Surface
 
 
 To generate trajectories on the muller potential, use the script `mullermsm_propagate.py`. 
@@ -71,19 +71,71 @@ To show only the first trajectory, you can use the command
     $ mullermsm_plot_trajectories.py -t 1
 
 
-### Clustering the trajectories into a microstate MSM
+### (2) Clustering the trajectories into a microstate MSM
 
+Now that we've generated the trajectories, we'll use the standard MSMBuilder
+pipeline to cluster the trajectories into microstates. The only complication
+is that we need to instruct MSMBuilder to use the right distance metric for
+clustering. Instead of RMSD, which might be the appropriate distance metric for
+three-dimensional proteins, we simply want to use the two-dimensional euclidean
+distance. We do that by suppling a "custom" distance metric.
 
-Then, to use the kcenters algorithm to cluster into 100 microstates, you could
-use the command
+MSMBuilder provides a number of different clustering algorithms, which each take
+a variety of different parameters. For this tutorial, we'll use the simplest
+algorithm, called "kcenters", and tell it to produce 100 microstates.
+
+To do this, call the following script.
 
     $ Cluster.py custom -i metric.pickl kcenters -k 100
 
 
-Finally, you can plot your clustering as a Veroni decompsosition using the command `mullermsm_plot_veroni.py`
+### (3) Viewing our trajectories and microstates
 
-    $ mullermsm_plot_veroni.py -g Data/Gens.lh5 -p ProjectInfo.h5
+The MullerMSM package provides two scripts to help you view your trajectories and
+your microstates.
 
+To view all of your trajectories plotted in 2D, execute the command
+
+    $ mullermsm_plot_trajectories.py
+    
+You should see a plot like this. Each point represents the coordinates of one
+frame of your simulation, and the color background shows the underlying potential
+energy surface.
+    
+To view your microstates, execute the command
+
+    $ mullermsm_voronoi.py
+
+### (4) Choosing a lag time by implied timescale analysis
+
+MSMs model the dynamics of your system as a memoryless process at a discrete time
+interval. This interval is called the lag time, and choosing the appropriate lag
+time key parameter choice in constructing a Markov Model. The choice of lag time
+presents something known as a bias-variance tradeoff in statistics. Picking a short
+lag time can lead to biased estimators of the properties of the system, because it
+takes a nonzero amount of time for the system to "forget" its passed history, a
+property that is assumed by a markov model. However, picking a long lag time
+unnecessarily discards data, and makes the statistical estimates of the model
+properties noisy. A long lagtime also produces a model with less microscopic insight.
+
+In general, we'd like to pick the shortest lag time we can without introducing an
+unnecessarily large bias into the model. We generally do this by calculating the
+models "implied relaxation timescales" at a variety of lagtime, and looking for the
+point at which these timescales begin to converge with respect to lag time.
+
+To calculate the implied timescales at lag times from 1 to 50 (with an interval of
+2), use the command:
+
+    CalculateImpliedTimescales.py -l 1,50 -i 2
+
+To visualize the implied timescales, use the command
+    
+    PlotImpliedTimescales.py
+    
+This analysis is a standard part of MSMBuilder and not specific to MullerMSM.
+
+You should see a plot similar to this:
+<img width="400" height="400" src=https://raw.github.com/rmcgibbo/mullermsm/master/ImpliedTimescales.png></src>
 
 
 
