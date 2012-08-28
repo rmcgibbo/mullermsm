@@ -1,11 +1,10 @@
-MullerMSM : An MSMBuilder addon for dynamics on the 2D Muller Potential
-=========
+# MullerMSM : An MSMBuilder addon for dynamics on the 2D Muller Potential
+
 
 <img width="400" height="400" src=https://raw.github.com/rmcgibbo/mullermsm/master/potential.png></src>
 
 
-Overview
---------
+## Overview
 This package allows you to sample trajectories on the Muller-Brown potential
 and then use MSMBuilder to build Markov state models to describe the dynamics.
 
@@ -13,8 +12,7 @@ The intent is to provide a simple teaching tool illustrating the process of buil
 Markov state models in a simple and intuitive environment.
 
 
-Installation
-------------
+## Installation
 
 The package is hosted at `https://github.com/rmcgibbo/mullermsm`. You can download
 the package either with git:
@@ -34,8 +32,7 @@ To install the MullerMSM package, run
     $ python setupy.py install
 
 
-Using MullerMSM
----------------
+## Using MullerMSM
 
 The MullerMSM package installs three scripts
 
@@ -53,8 +50,8 @@ The third script, `mullermsm_voronoi.py`, helps to visualize the microstates
 and macrostates of your MSMs.
 
 
-Simulating Trajectories on the Muller Potential Energy Surface
-**************************************************************
+### Simulating Trajectories on the Muller Potential Energy Surface
+
 
 To generate trajectories on the muller potential, use the script `mullermsm_propagate.py`. 
 To simulate ten trajectories of a length 10,000 steps, use the following command.
@@ -74,8 +71,7 @@ To show only the first trajectory, you can use the command
     $ mullermsm_plot_trajectories.py -t 1
 
 
-Clustering the trajectories into a microstate MSM
-*************************************************
+### Clustering the trajectories into a microstate MSM
 
 
 Then, to use the kcenters algorithm to cluster into 100 microstates, you could
