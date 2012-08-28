@@ -6,16 +6,60 @@ MullerMSM : An MSMBuilder addon for dynamics on the 2D Muller Potential
 
 Overview
 --------
-This package allows you to sample trajectories on the Muller potential
-and then use MSMBuilder to build MSMs for the dynamics.
+This package allows you to sample trajectories on the Muller-Brown potential
+and then use MSMBuilder to build Markov state models to describe the dynamics.
+
+The intent is to provide a simple teaching tool illustrating the process of building
+Markov state models in a simple and intuitive environment.
+
+
+Installation
+------------
+
+The package is hosted at `https://github.com/rmcgibbo/mullermsm`. You can download
+the package either with git:
+
+    $ git cline git://github.com/rmcgibbo/mullermsm.git
+  
+Or by downloading a zip file from the `https://github.com/rmcgibbo/mullermsm/zipball/master`
+
+MullerMSM requires MSMBuilder2.5.1 or later, which can be downloaded from
+http://simtk.org/home/msmbuilder. It also requires theano, which can be installed
+with 
+
+    $ easy_install theano
+
+To install the MullerMSM package, run
+
+    $ python setupy.py install
 
 
 Using MullerMSM
 ---------------
 
-To generate trajectories on the muller potential, use the script `mullermsm_propagate.py`. To simulate ten trajectories of a length 10,000 steps, use the following command.
+The MullerMSM package installs three scripts
+
+    mullermsm_propagate.py
+    mullermsm_plot_trajectories.py
+    mullermsm_voronoi.py
+
+The first script, `mullermsm_propagate.py`, propagates trajectories on the Muller
+potential energy surface using a simple Langevin integrator, and saves the
+results in MSMBuilder's format.
+
+The second script, `mullermsm_plot_trajectories.py`, plots the trajectories.
+
+The third script, `mullermsm_voronoi.py`, helps to visualize the microstates
+and macrostates of your MSMs.
+
+
+Simulating Trajectories on the Muller Potential Energy Surface
+**************************************************************
+
+To generate trajectories on the muller potential, use the script `mullermsm_propagate.py`. 
+To simulate ten trajectories of a length 10,000 steps, use the following command.
     
-	$ mullermsm_propagate.py -n 10 -t 10000
+    $ mullermsm_propagate.py -n 10 -t 10000
 
 This script will save the trajectories in MSMBuilder's format, and will
 create a `ProjectInfo.h5` file for MSMBuilder. You can view the
@@ -24,21 +68,14 @@ trajectories with `mullermsm_plot_trajectories.py`.
 To show all of the trajectories, use the command.
 
     $ mullermsm_plot_trajectories.py
-	
+
 To show only the first trajectory, you can use the command
 
     $ mullermsm_plot_trajectories.py -t 1
 
-To cluster the trajectories using MSMBuilder, you need to give MSMBuilder
-an appropriate distance metric. For a toy 2D potential like this, there's
-really no concept of rotation and translational invariance, so something like
-RMSD -- MSMBuilder's default -- is too complicated.
 
-To build the appropriate distance metric, use `mullermsm_metric.py`. This will
-save a file called `metric.pickl`, which can be used as a "custom" distance metric
-for msmbuilder. This is as simple as executing
-
-    $ mullermsm_metric.py
+Clustering the trajectories into a microstate MSM
+*************************************************
 
 
 Then, to use the kcenters algorithm to cluster into 100 microstates, you could
@@ -53,29 +90,4 @@ Finally, you can plot your clustering as a Veroni decompsosition using the comma
 
 
 
-Installation
-------------
-
-Run
-
-    $ python setupy.py install
-    
-In addition to the library, it installs three scripts: `mullermsm_metric.py`
-`mullermsm_plot_trajectories.py` and `mullermsm_propagate.py`
-
-Requirements 
------------
-
-This package requires MSMBuilder, which can be downloaded from http://simtk.org/home/msmbuilder.
-MSMBuilder 2.5.1 or greater is required.
-
-Other requirements include theano, numpy, matplotlib, and ipython.
-
-theano can be installed with
-
-    $ pip install theano
-    
-or, if you prefer `easy_install`
-
-    $ easy_install theano
 

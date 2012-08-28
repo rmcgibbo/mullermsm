@@ -8,6 +8,7 @@ from msmbuilder import Project, Trajectory
 import numpy as np
 import IPython as ip
 import random
+import cPickle as pickle
 
 def main():
     parser = argparse.ArgumentParser()
@@ -65,6 +66,10 @@ def main():
         
     project.SaveToHDF('ProjectInfo.h5')
     print 'saved ProjectInfo.h5 file'
+
+    
+    pickle.dump(metric.EuclideanMetric(), open('metric.pickl', 'w'))
+    print 'saved metric.pickl'
     
     
 if __name__ == '__main__':
