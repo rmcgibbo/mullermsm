@@ -1,5 +1,8 @@
 *.py[co]
 
+# mac metadata files
+._*
+
 # Packages
 *.egg
 *.egg-info
