@@ -110,6 +110,9 @@ energy surface.
 To view your microstates, execute the command
 
     $ mullermsm_voronoi.py
+    
+<img width="400" height="300" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/Voronoi.png></src>
+
 
 ### (4) Choosing a lag time by implied timescale analysis
 
