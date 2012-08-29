@@ -1,4 +1,4 @@
-# MullerMSM : An MSMBuilder addon for dynamics on the 2D Muller Potential
+# MullerMSM : Markov State Models on the Muller potential -- a MSMBuilder Tutorial
 
 
 <img width="400" height="300" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/potential.png></src>
@@ -15,14 +15,14 @@ Markov state models in a simple and intuitive environment.
 ## Installation
 
 The package is hosted at `https://github.com/rmcgibbo/mullermsm`. You can download
-the package either with git:
+the package either with the `git` version control system:
 
     $ git clone git://github.com/rmcgibbo/mullermsm.git
   
-Or by downloading a zip file from `https://github.com/rmcgibbo/mullermsm/zipball/master`
+Or by downloading a zip file from https://github.com/rmcgibbo/mullermsm/zipball/master
 
 MullerMSM requires MSMBuilder2.5.1 or later, which can be downloaded from
-http://simtk.org/home/msmbuilder. It also requires theano, which can be installed
+http://simtk.org/home/msmbuilder. It also requires `theano`, which can be installed
 with 
 
     $ easy_install theano
@@ -57,6 +57,10 @@ and macrostates of your MSMs.
 
 ### (1) Simulating Trajectories on the Muller Potential Energy Surface
 
+First, make a new directory to do your work in, and `cd` there
+
+    $ mkdir ~/muller
+    $ cd ~/muller
 
 To generate trajectories on the muller potential, use the script `mullermsm_propagate.py`. 
 To simulate ten trajectories of a length 10,000 steps, use the following command.
