@@ -38,6 +38,7 @@ The MullerMSM package installs three scripts
 
     mullermsm_propagate.py
     mullermsm_plot_trajectories.py
+    mullermsm_plot_assignments.py
     mullermsm_voronoi.py
 
 The first script, `mullermsm_propagate.py`, propagates trajectories on the Muller
@@ -46,7 +47,11 @@ results in MSMBuilder's format.
 
 The second script, `mullermsm_plot_trajectories.py`, plots the trajectories.
 
-The third script, `mullermsm_voronoi.py`, helps to visualize the microstates
+The third script, `mullermsm_plot_assignments.py`, plots the trajectories with where
+each point is colored based on its micro or macrostate membership, and can help
+to visualize a macrostate MSM.
+
+The fourth script, `mullermsm_voronoi.py`, helps to visualize the microstates
 and macrostates of your MSMs.
 
 
@@ -135,7 +140,52 @@ To visualize the implied timescales, use the command
 This analysis is a standard part of MSMBuilder and not specific to MullerMSM.
 
 You should see a plot similar to this:
-<img width="400" height="400" src=https://raw.github.com/rmcgibbo/mullermsm/master/ImpliedTimescales.png></src>
+<img width="400" height="400" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/ImpliedTimescales.png></src>
+
+Visual inspection of this plot reveals that the model begins to converge at
+a lag time of roughly 5-10 units.
 
 
+### (5) Building a macrostate model to capture the main dynamical processes
 
+The implied timescale plot shows two dominant relaxation timescales, which suggests
+that a three state macrostate model may be able to capture the essential dynamics.
+
+To course grain our microstate model into a three model, we'll first build a full
+microstate MSM at a lag time of 5, and then coarse grain that microstate model
+using the PCCA+ algorithm.
+
+    $ BuildMSM.py -l 5
+    $ PCCA.py -n 3 -o Macro3 -A PCCA+
+
+MullerMSM provides a script that we can use to plot this macrostate model, by plotting
+all the points from our trajectories with their color indicating which macrostate
+they are a member of. To use this script, execute the following command
+
+    $ mullermsm_plot_assignments.py -a Macro3/MacroAssignments.h5
+    
+You should see plot similar to the one below, showing that MSMBuilder identified the
+three dominant free energy basins.
+
+<img width="400" height="400" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/Macro3.png></src>
+
+### (6) Implied timescale analysis for the macrostate MSM
+
+To see how well the macrostate MSM can quantitatively reproduce the data, lets look
+at the implied timescales of macrostate model.
+
+The following command will calculate the implied timescales for your three state
+MSM.
+
+    $ CalculateImpliedTimescales.py -l 1,50 -i 5 -o Macro3/ImpliedTimescales.dat -e 2 -a Macro3/MacroAssignments.h5
+
+You can plot these timescales with the command
+
+    $ PlotImpliedTimescales.py -i Macro3/ImpliedTimescales.dat
+    
+You'll notice that we see only two curves. This is because the three state model can
+only capture at most two dynamical processes, as the within-state dynamics are
+not captured at the macrostate level. Nonetheless, the two slowest dynamical processes
+are faithfully reproduced using this model.
+
+<img width="400" height="400" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/Macro3_ImpliedTimescales.png></src>
