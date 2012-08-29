@@ -1,7 +1,7 @@
 # MullerMSM : An MSMBuilder addon for dynamics on the 2D Muller Potential
 
 
-<img width="500" height="300" align="middle" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/potential.png></src>
+<img width="400" height="300" align="middle" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/potential.png></src>
 
 
 ## Overview
@@ -139,7 +139,7 @@ To visualize the implied timescales, use the command
     
 This analysis is a standard part of MSMBuilder and not specific to MullerMSM.
 
-<img width="500" height="300" align="middle" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/ImpliedTimescales.png></src>
+<img width="400" height="300" align="middle" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/ImpliedTimescales.png></src>
 
 Visual inspection of this plot reveals that the model begins to converge at
 a lag time of roughly 5-10 units.
@@ -166,7 +166,7 @@ they are a member of. To use this script, execute the following command
 You should see plot similar to the one below, showing that MSMBuilder identified the
 three dominant free energy basins.
 
-<img width="500" height="300" align="middle" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/Macro3.png></src>
+<img width="400" height="300" style="margin-left: auto; margin-right: auto;" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/Macro3.png></src>
 
 ### (6) Implied timescale analysis for the macrostate MSM
 
@@ -187,7 +187,7 @@ only capture at most two dynamical processes, as the within-state dynamics are
 not captured at the macrostate level. Nonetheless, the two slowest dynamical processes
 are faithfully reproduced using this model.
 
-<img width="500" height="300" align="middle" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/Macro3_ImpliedTimescales.png></src>
+<img width="400" height="300" align="middle" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/Macro3_ImpliedTimescales.png></src>
 
 ### (7) Exercises
 
