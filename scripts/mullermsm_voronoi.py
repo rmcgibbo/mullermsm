@@ -16,7 +16,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-g', '--generators', default='Data/Gens.lh5', help='Path to Gens.lh5')
     parser.add_argument('-p', '--project', default='ProjectInfo.h5', help='Path to ProjectInfo.h5')
-    parser.add_argument('-s', '--stride', default=1, type=int, help='Stride to plot the data at')
+    parser.add_argument('-s', '--stride', default=5, type=int, help='Stride to plot the data at')
     args = parser.parse_args()
     
     
@@ -24,8 +24,9 @@ def main():
     gens_x = gens['XYZList'][:,0,0]
     gens_y =  gens['XYZList'][:,0,1]
     points = np.array([gens_x, gens_y]).transpose()
-    #a = Serializer.LoadData(args.assignments)
-    #n_states = a.max() + 1
+    
+    
+    
     tri = Delaunay(points)
 
     PL = []
@@ -40,12 +41,16 @@ def main():
             edge_points.append((v[x1],v[x2]))
 
     lines = LineCollection(edge_points, linewidths=0.5, color='k')
-    pp.gca().add_collection(lines)
+    
+    fig = pp.figure()
+    ax = fig.add_subplot(111)
+    
+    fig.gca().add_collection(lines)
 
     maxx, minx= np.max(gens_x), np.min(gens_x)
     maxy, miny = np.max(gens_y), np.min(gens_y)
     # plot the background
-    plot_v(minx=minx, maxx=maxx, miny=miny, maxy=maxy)
+    plot_v(minx=minx, maxx=maxx, miny=miny, maxy=maxy, ax=ax)
     pp.xlim(minx, maxx)
     pp.ylim(miny, maxy)
 
@@ -54,7 +59,14 @@ def main():
     t = p.LoadTraj(0)
     x = t['XYZList'][:,0,0][::args.stride]
     y = t['XYZList'][:,0,1][::args.stride]
-    pp.plot(x, y, 'k')
+    cm = pp.get_cmap('spectral')
+
+    n_points = len(x)
+    ax.set_color_cycle([cm(1.*i/(n_points-1)) for i in range(n_points-1)])
+    for i in range(n_points-1):
+        ax.plot(x[i:i+2],y[i:i+2])
+
+    pp.title('Voronoi Microstate Decomposition, with first trajectory')
     
 
 

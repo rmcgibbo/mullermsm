@@ -119,7 +119,7 @@ def propagate(n_frames, initial_x, kT, dt, mGamma, force):
     return position
     
 
-def plot_v(minx=-1.5, maxx=1.2, miny=-0.2, maxy=2):
+def plot_v(minx=-1.5, maxx=1.2, miny=-0.2, maxy=2, ax=None):
     "Plot the Muller potential"
     grid_width = max(maxx-minx, maxy-miny) / 200.0
     
@@ -128,7 +128,10 @@ def plot_v(minx=-1.5, maxx=1.2, miny=-0.2, maxy=2):
     V = muller_potential(xx, yy)
     # clip off any values greater than 200, since they mess up
     # the color scheme
-    pp.contourf(xx, yy, V.clip(max=200), 40)
+    if ax is None:
+        ax = pp
+
+    ax.contourf(xx, yy, V.clip(max=200), 40)
 
 def plot_traj():
     n_frames = 50000
