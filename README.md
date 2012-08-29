@@ -29,7 +29,7 @@ with
 
 To install the MullerMSM package, run
 
-    $ python setupy.py install
+    $ python setup.py install
 
 
 ## Using MullerMSM
@@ -75,11 +75,6 @@ To show all of the trajectories, use the command.
 
     $ mullermsm_plot_trajectories.py
 
-To show only the first trajectory, you can use the command
-
-    $ mullermsm_plot_trajectories.py -t 1
-
-
 ### (2) Clustering the trajectories into a microstate MSM
 
 Now that we've generated the trajectories, we'll use the standard MSMBuilder
@@ -111,7 +106,7 @@ You should see a plot like this. Each point represents the coordinates of one
 frame of your simulation, and the color background shows the underlying potential
 energy surface.
     
-To view your microstates, execute the command
+To view your microstates, execute the command. This shows the regions on the potential energy surface which correspond to each microstate, with the first trajectory plotted on top. The color scheme for the trajectory indicates the progression of time.
 
     $ mullermsm_voronoi.py
     
