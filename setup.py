@@ -1,9 +1,10 @@
 from glob import glob
-from distutils.core import setup
+from setuptools import setup
 
 setup(name='mullermsm',
       version='0.1',
       license='GPLv3',
+      install_requires=['theano'],
       include_package_data=True,
       package_data = {'': ['conf.pdb']},
       packages=['mullermsm'],
