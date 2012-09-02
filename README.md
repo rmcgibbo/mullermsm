@@ -36,10 +36,12 @@ To install the MullerMSM package, run
 
 The MullerMSM package installs three scripts
 
+```
     mullermsm_propagate.py
     mullermsm_plot_trajectories.py
     mullermsm_plot_assignments.py
     mullermsm_voronoi.py
+```
 
 The first script, `mullermsm_propagate.py`, propagates trajectories on the Muller
 potential energy surface using a simple Langevin integrator, and saves the

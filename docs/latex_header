@@ -1,0 +1,10 @@
+\documentclass{article}
+\usepackage{listings, color}
+\begin{document}
+\definecolor{lightlightgray}{gray}{0.9}
+\lstset{breaklines=true,
+        language=bash,
+        backgroundcolor=\color{lightlightgray},
+        basicstyle=\ttfamily,
+        }
+
