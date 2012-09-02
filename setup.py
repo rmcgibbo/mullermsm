@@ -7,6 +7,6 @@ setup(name='mullermsm',
       include_package_data=True,
       package_data = {'': ['conf.pdb']},
       packages=['mullermsm'],
-      install_requires=['theano', 'numpy', 'matplotlib', 'ipython'],
+      #install_requires=['theano', 'numpy', 'matplotlib', 'ipython'],
       package_dir={'mullermsm':'lib'},
       scripts=glob('scripts/*.py'))
