@@ -17,19 +17,22 @@ Markov state models in a simple and intuitive environment.
 The package is hosted at `https://github.com/rmcgibbo/mullermsm`. You can download
 the package either with the `git` version control system:
 
-    $ git clone git://github.com/rmcgibbo/mullermsm.git
-  
+```
+  $ git clone git://github.com/rmcgibbo/mullermsm.git
+```
+
 Or by downloading a zip file from https://github.com/rmcgibbo/mullermsm/zipball/master
 
 MullerMSM requires MSMBuilder2.5.1 or later, which can be downloaded from
 http://simtk.org/home/msmbuilder. It also requires `theano`, which can be installed
 with 
-
-    $ easy_install theano
+```
+  $ easy_install theano
+```
 
 To install the MullerMSM package, run
 ```
-$ python setup.py install
+  $ python setup.py install
 ```
 
 ## Using MullerMSM
@@ -37,10 +40,10 @@ $ python setup.py install
 The MullerMSM package installs three scripts
 
 ```
-mullermsm_propagate.py
-mullermsm_plot_trajectories.py
-mullermsm_plot_assignments.py
-mullermsm_voronoi.py
+  mullermsm_propagate.py
+  mullermsm_plot_trajectories.py
+  mullermsm_plot_assignments.py
+  mullermsm_voronoi.py
 ```
 
 The first script, `mullermsm_propagate.py`, propagates trajectories on the Muller
@@ -61,9 +64,10 @@ and macrostates of your MSMs.
 
 First, make a new directory to do your work in, and `cd` there
 
-    $ mkdir ~/muller
-    $ cd ~/muller
-
+```
+  $ mkdir ~/muller
+  $ cd ~/muller
+```
 To generate trajectories on the muller potential, use the script `mullermsm_propagate.py`. 
 To simulate ten trajectories of a length 10,000 steps, use the following command.
     
