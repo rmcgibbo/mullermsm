@@ -1,5 +1,6 @@
 from glob import glob
-from setuptools import setup
+#from setuptools import setup
+from distutils.core import setup
 
 setup(name='mullermsm',
       version='0.1',
