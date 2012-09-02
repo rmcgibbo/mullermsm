@@ -1,6 +1,6 @@
 from glob import glob
-#from setuptools import setup
-from distutils.core import setup
+from setuptools import setup
+#from distutils.core import setup
 
 setup(name='mullermsm',
       version='0.1',
@@ -10,4 +10,6 @@ setup(name='mullermsm',
       packages=['mullermsm'],
       #install_requires=['theano', 'numpy', 'matplotlib', 'ipython'],
       package_dir={'mullermsm':'lib'},
-      scripts=glob('scripts/*.py'))
+      scripts=['scripts/mullermsm_plot_assignments.py'],
+      #scripts=glob('scripts/*.py'))
+)
