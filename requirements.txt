@@ -1,4 +1,0 @@
-theano
-numpy
-matplotlib
-ipython

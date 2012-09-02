@@ -1,0 +1,16 @@
+To install, run
+
+    $ python setup.py install
+
+To build the documentation, run
+
+    $ gimli
+
+which will turn the README.md into a pdf file for you. `gimli`
+requires ruby, and can be installed with
+    
+    $ [sudo] gem install gimli
+
+See https://github.com/walle/gimli for more details.
+
+
