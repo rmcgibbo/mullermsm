@@ -28,19 +28,19 @@ with
     $ easy_install theano
 
 To install the MullerMSM package, run
-
-    $ python setup.py install
-
+```
+$ python setup.py install
+```
 
 ## Using MullerMSM
 
 The MullerMSM package installs three scripts
 
 ```
-    mullermsm_propagate.py
-    mullermsm_plot_trajectories.py
-    mullermsm_plot_assignments.py
-    mullermsm_voronoi.py
+mullermsm_propagate.py
+mullermsm_plot_trajectories.py
+mullermsm_plot_assignments.py
+mullermsm_voronoi.py
 ```
 
 The first script, `mullermsm_propagate.py`, propagates trajectories on the Muller
