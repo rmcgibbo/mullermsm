@@ -26,6 +26,7 @@ Or by downloading a zip file from https://github.com/rmcgibbo/mullermsm/zipball/
 MullerMSM requires MSMBuilder2.5.1 or later, which can be downloaded from
 http://simtk.org/home/msmbuilder. It also requires `theano`, which can be installed
 with 
+
 ```
   $ easy_install theano
 ```
@@ -68,10 +69,13 @@ First, make a new directory to do your work in, and `cd` there
   $ mkdir ~/muller
   $ cd ~/muller
 ```
+
 To generate trajectories on the muller potential, use the script `mullermsm_propagate.py`. 
 To simulate ten trajectories of a length 10,000 steps, use the following command.
-    
-    $ mullermsm_propagate.py -n 10 -t 10000
+
+```
+  $ mullermsm_propagate.py -n 10 -t 10000
+```
 
 This script will save the trajectories in MSMBuilder's format, and will
 create a `ProjectInfo.h5` file for MSMBuilder. You can view the
@@ -79,7 +83,9 @@ trajectories with `mullermsm_plot_trajectories.py`.
 
 To show all of the trajectories, use the command.
 
-    $ mullermsm_plot_trajectories.py
+```
+  $ mullermsm_plot_trajectories.py
+```
 
 ### (2) Clustering the trajectories into a microstate MSM
 
@@ -96,8 +102,9 @@ algorithm, called "kcenters", and tell it to produce 100 microstates.
 
 To do this, call the following script.
 
-    $ Cluster.py custom -i metric.pickl kcenters -k 100
-
+```
+  $ Cluster.py custom -i metric.pickl kcenters -k 100
+```
 
 ### (3) Viewing our trajectories and microstates
 
@@ -106,16 +113,20 @@ your microstates.
 
 To view all of your trajectories plotted in 2D, execute the command
 
-    $ mullermsm_plot_trajectories.py
-    
+```
+  $ mullermsm_plot_trajectories.py
+```
+
 You should see a plot like this. Each point represents the coordinates of one
 frame of your simulation, and the color background shows the underlying potential
 energy surface.
     
 To view your microstates, execute the command. This shows the regions on the potential energy surface which correspond to each microstate, with the first trajectory plotted on top. The color scheme for the trajectory indicates the progression of time.
 
-    $ mullermsm_voronoi.py
-    
+```
+  $ mullermsm_voronoi.py
+```
+
 <img width="400" height="300" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/Voronoi.png></src>
 
 
@@ -139,12 +150,16 @@ point at which these timescales begin to converge with respect to lag time.
 To calculate the implied timescales at lag times from 1 to 50 (with an interval of
 2), use the command:
 
-    CalculateImpliedTimescales.py -l 1,50 -i 2
+```
+  $ CalculateImpliedTimescales.py -l 1,50 -i 2
+```
 
 To visualize the implied timescales, use the command
-    
-    PlotImpliedTimescales.py
-    
+  
+```
+  $ PlotImpliedTimescales.py
+```
+
 This analysis is a standard part of MSMBuilder and not specific to MullerMSM.
 
 <img width="400" height="300" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/ImpliedTimescales.png></src>
@@ -162,15 +177,19 @@ To course grain our microstate model into a three model, we'll first build a ful
 microstate MSM at a lag time of 5, and then coarse grain that microstate model
 using the PCCA+ algorithm.
 
-    $ BuildMSM.py -l 5
-    $ PCCA.py -n 3 -o Macro3 -A PCCA+
+```
+  $ BuildMSM.py -l 5
+  $ PCCA.py -n 3 -o Macro3 -A PCCA+
+```
 
 MullerMSM provides a script that we can use to plot this macrostate model, by plotting
 all the points from our trajectories with their color indicating which macrostate
 they are a member of. To use this script, execute the following command
 
-    $ mullermsm_plot_assignments.py -a Macro3/MacroAssignments.h5
-    
+```
+  $ mullermsm_plot_assignments.py -a Macro3/MacroAssignments.h5
+```
+
 You should see plot similar to the one below, showing that MSMBuilder identified the
 three dominant free energy basins.
 
@@ -184,12 +203,17 @@ at the implied timescales of macrostate model.
 The following command will calculate the implied timescales for your three state
 MSM.
 
-    $ CalculateImpliedTimescales.py -l 1,50 -i 5 -o Macro3/ImpliedTimescales.dat -e 2 -a Macro3/MacroAssignments.h5
+```
+  $ CalculateImpliedTimescales.py -l 1,50 -i 5 \
+     -o Macro3/ImpliedTimescales.dat -e 2 -a Macro3/MacroAssignments.h5
+```
 
 You can plot these timescales with the command
 
-    $ PlotImpliedTimescales.py -i Macro3/ImpliedTimescales.dat
-    
+```
+  $ PlotImpliedTimescales.py -i Macro3/ImpliedTimescales.dat
+```
+
 You'll notice that we see only two curves. This is because the three state model can
 only capture at most two dynamical processes, as the within-state dynamics are
 not captured at the macrostate level. Nonetheless, the two slowest dynamical processes
