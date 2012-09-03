@@ -14,21 +14,32 @@ Markov state models in a simple and intuitive environment.
 
 ## Installation
 
-The package is hosted at `https://github.com/rmcgibbo/mullermsm`. You can download
+Note: MullerMSM requires MSMBuilder2.5.1 or later, which can be downloaded
+from http://simtk.org/home/msmbuilder.
+
+### Easy way
+
+The easy way to install this package is using `pip`, the python package manager (http://pypi.python.org/pypi/pip/).
+
+```
+  $ pip install git+git://github.com/rmcgibbo/mullermsm.git
+```
+
+### Slightly harder way
+
+The package is hosted at https://github.com/rmcgibbo/mullermsm. You can download
 the package either with the `git` version control system:
 
 ```
   $ git clone git://github.com/rmcgibbo/mullermsm.git
 ```
 
-Or by downloading a zip file from https://github.com/rmcgibbo/mullermsm/zipball/master
+Or by downloading a zip file from `http://github.com/rmcgibbo/mullermsm/zipball/master`
 
-MullerMSM requires MSMBuilder2.5.1 or later, which can be downloaded from
-http://simtk.org/home/msmbuilder. It also requires `theano`, which can be installed
-with 
+MullerMSM also requires the python package `theano`, which can be installed with 
 
 ```
-  $ easy_install theano
+  $ pip theano
 ```
 
 To install the MullerMSM package, run
