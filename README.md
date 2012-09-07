@@ -92,12 +92,6 @@ This script will save the trajectories in MSMBuilder's format, and will
 create a `ProjectInfo.h5` file for MSMBuilder. You can view the
 trajectories with `mullermsm_plot_trajectories.py`.
 
-To show all of the trajectories, use the command.
-
-```
-  $ mullermsm_plot_trajectories.py
-```
-
 ### (2) Clustering the trajectories into a microstate MSM
 
 Now that we've generated the trajectories, we'll use the standard MSMBuilder
