@@ -23,6 +23,7 @@ The easy way to install this package is using `pip`, the python package manager 
 
 ```
   $ pip install git+git://github.com/rmcgibbo/mullermsm.git
+  
 ```
 
 ### Slightly harder way
@@ -32,6 +33,7 @@ the package either with the `git` version control system:
 
 ```
   $ git clone git://github.com/rmcgibbo/mullermsm.git
+  
 ```
 
 Or by downloading a zip file from `http://github.com/rmcgibbo/mullermsm/zipball/master`
@@ -40,11 +42,13 @@ MullerMSM also requires the python package `theano`, which can be installed with
 
 ```
   $ pip theano
+  
 ```
 
 To install the MullerMSM package, run
 ```
   $ python setup.py install
+  
 ```
 
 ## Using MullerMSM
@@ -56,6 +60,7 @@ The MullerMSM package installs three scripts
   mullermsm_plot_trajectories.py
   mullermsm_plot_assignments.py
   mullermsm_voronoi.py
+  
 ```
 
 The first script, `mullermsm_propagate.py`, propagates trajectories on the Muller
@@ -79,6 +84,7 @@ First, make a new directory to do your work in, and `cd` there
 ```
   $ mkdir ~/muller
   $ cd ~/muller
+  
 ```
 
 To generate trajectories on the muller potential, use the script `mullermsm_propagate.py`. 
@@ -86,6 +92,7 @@ To simulate ten trajectories of a length 10,000 steps, use the following command
 
 ```
   $ mullermsm_propagate.py -n 10 -t 10000
+  
 ```
 
 This script will save the trajectories in MSMBuilder's format, and will
@@ -109,6 +116,7 @@ To do this, call the following script.
 
 ```
   $ Cluster.py custom -i metric.pickl kcenters -k 100
+  
 ```
 
 ### (3) Viewing our trajectories and microstates
@@ -120,16 +128,18 @@ To view all of your trajectories plotted in 2D, execute the command
 
 ```
   $ mullermsm_plot_trajectories.py
+  
 ```
 
-You should see a plot like this. Each point represents the coordinates of one
+On the plot, each point represents the coordinates of one
 frame of your simulation, and the color background shows the underlying potential
 energy surface.
     
-To view your microstates, execute the command. This shows the regions on the potential energy surface which correspond to each microstate, with the first trajectory plotted on top. The color scheme for the trajectory indicates the progression of time.
+To view your microstates, execute the command below. This shows the regions on the potential energy surface which correspond to each microstate, with the first trajectory plotted on top. The color scheme for the trajectory indicates the progression of time.
 
 ```
   $ mullermsm_voronoi.py
+  
 ```
 
 <img width="400" height="300" src=https://raw.github.com/rmcgibbo/mullermsm/master/images/Voronoi.png></src>
@@ -157,12 +167,14 @@ To calculate the implied timescales at lag times from 1 to 50 (with an interval 
 
 ```
   $ CalculateImpliedTimescales.py -l 1,50 -i 2
+  
 ```
 
 To visualize the implied timescales, use the command
   
 ```
   $ PlotImpliedTimescales.py
+  
 ```
 
 This analysis is a standard part of MSMBuilder and not specific to MullerMSM.
@@ -185,6 +197,7 @@ using the PCCA+ algorithm.
 ```
   $ BuildMSM.py -l 5
   $ PCCA.py -n 3 -o Macro3 -A PCCA+
+  
 ```
 
 MullerMSM provides a script that we can use to plot this macrostate model, by plotting
@@ -193,6 +206,7 @@ they are a member of. To use this script, execute the following command
 
 ```
   $ mullermsm_plot_assignments.py -a Macro3/MacroAssignments.h5
+  
 ```
 
 You should see plot similar to the one below, showing that MSMBuilder identified the
@@ -211,12 +225,14 @@ MSM.
 ```
   $ CalculateImpliedTimescales.py -l 1,50 -i 5 \
      -o Macro3/ImpliedTimescales.dat -e 2 -a Macro3/MacroAssignments.h5
+  
 ```
 
 You can plot these timescales with the command
 
 ```
   $ PlotImpliedTimescales.py -i Macro3/ImpliedTimescales.dat
+  
 ```
 
 You'll notice that we see only two curves. This is because the three state model can
