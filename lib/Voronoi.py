@@ -102,6 +102,10 @@ BIG_FLOAT = 1e38
 #------------------------------------------------------------------
 class Context( object ):
     def __init__(self):
+        Edge.EDGE_NUM = 0
+        # CRS Added line here to reset the class variable Edge.EDGE_NUM
+        # the problem is when you try and instantiate a new Context, that 
+        # index is too large, and so you get an index error
         self.doPrint = 0
         self.debug   = 0
         self.plot    = 0
