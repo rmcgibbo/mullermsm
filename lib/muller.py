@@ -121,10 +121,11 @@ def propagate(n_frames, initial_x, kT, dt, mGamma, force):
     return position
     
 
-def plot_v(minx=-1.5, maxx=1.2, miny=-0.2, maxy=2, ax=None):
+def plot_v(minx=-1.5, maxx=1.2, miny=-0.2, maxy=2, **kwargs):
     "Plot the Muller potential"
     grid_width = max(maxx-minx, maxy-miny) / 200.0
     
+    ax = kwargs.pop('ax', None)
     
     xx, yy = np.mgrid[minx : maxx : grid_width, miny : maxy : grid_width]
     V = muller_potential(xx, yy)
@@ -133,7 +134,7 @@ def plot_v(minx=-1.5, maxx=1.2, miny=-0.2, maxy=2, ax=None):
     if ax is None:
         ax = pp
 
-    ax.contourf(xx, yy, V.clip(max=200), 40)
+    ax.contourf(xx, yy, V.clip(max=200), 40, **kwargs)
 
 def plot_traj():
     n_frames = 50000
@@ -146,7 +147,7 @@ def plot_traj():
 
     pp.plot(traj[:,0], traj[:,1], 'k', markersize=3)
     
-def plot_voronoi(points, limits=None):
+def plot_voronoi(points, limits=None, color='black'):
 
     PL = []
     for p in points:
@@ -192,7 +193,7 @@ def plot_voronoi(points, limits=None):
                 x = (c - y * b) / a
             edge_points.append((v[x1], (x,y)))
 
-    lines = mpl.collections.LineCollection(edge_points, linewidths=0.5, color='k')
+    lines = mpl.collections.LineCollection(edge_points, linewidths=1, color=color)
     
     pp.gca().add_collection(lines)
 
